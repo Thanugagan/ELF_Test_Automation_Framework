@@ -6,13 +6,16 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 
 /**
@@ -39,6 +42,9 @@ public class UtilityMethods implements FrameworkConstants {
 			}
 		}
 	}
+	
+	
+	
 
 	/**
 	 * This method is used to switch the driver control to window based on an
@@ -119,6 +125,26 @@ public class UtilityMethods implements FrameworkConstants {
 			driver.switchTo().frame(indexNameOrId);
 		}
 	}
+	
+	public void acceptAlert(WebDriver driver)
+	{
+		driver.switchTo().alert().accept();
+	}
+
+	
+	public void waitForPageLaod(WebDriver driver)
+
+	{
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	
+	public void elementToBeVisible(WebDriver driver, WebElement element)
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(element));
+	}
+	
+	
 	
 	/**
 	 * This method will generate a random number within the boundary which is passed

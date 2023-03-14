@@ -3,11 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="testDataSample.SampleDataProvider">
+      <class name="testCaseSample.ShopperStack_DeleteAddress">
         <methods>
-          <include name="registerUser"/>
+          <include name="browserSetUp"/>
+          <include name="logoutOfApplication"/>
+          <include name="browserTearDown"/>
+          <include name="deleteAddress"/>
+          <include name="loginToApplication"/>
         </methods>
-      </class> <!-- testDataSample.SampleDataProvider -->
+      </class> <!-- testCaseSample.ShopperStack_DeleteAddress -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -26,8 +26,14 @@ public class Login_Page extends Base_Page {
 	@FindBy(id="Password") 
 	private WebElement passwordTextField;
 	
-	@FindBy(xpath="//input[@value='Log in']") 
+	@FindBy(id="loginBtn")
 	private WebElement loginButton;
+	
+	@FindBy(id ="Create Account") 
+	private WebElement registerLink;
+	
+	@FindBy(xpath = "//span[text()='Login']")
+	private WebElement log;
 
 	//================Getters or Public services================
 	public WebElement getEmailTextField() {
@@ -42,14 +48,26 @@ public class Login_Page extends Base_Page {
 		return loginButton;
 	}
 	
+	public WebElement getRegisterLink() {
+		return registerLink;
+	}
+	
+	public WebElement getLog() {
+		return log;
+	}
+
 	//================Business Logic or Action methods or Behavior================
 	public Home_Page login(String username, String password) {
-		getLoginLink().click();
+		loginButton.click();
 		emailTextField.sendKeys(username);
 		passwordTextField.sendKeys(password);
-		loginButton.click();
+		log.click();
 		
 		//landing Page Object
 		return new Home_Page(driver);
+	}
+	
+	public void CreateAccount() {
+		registerLink.click();
 	}
 }

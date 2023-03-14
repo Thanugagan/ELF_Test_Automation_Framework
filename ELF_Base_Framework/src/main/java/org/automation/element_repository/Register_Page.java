@@ -1,4 +1,4 @@
-package org.automation.element_repository;
+   package org.automation.element_repository;
 
 import org.automation.base.Base_Page;
 import org.openqa.selenium.WebDriver;
@@ -17,28 +17,34 @@ public class Register_Page extends Base_Page {
 	}
 
 	// ================Web elements or Property================
-	@FindBy(id = "gender-male")
+	@FindBy(id = "Male")
 	private WebElement maleRadioButton;
 
-	@FindBy(id = "gender-female")
+	@FindBy(id = "Female")
 	private WebElement femaleRadioButton;
 
-	@FindBy(id = "FirstName")
+	@FindBy(id = "First Name")
 	private WebElement firstNameTextField;
 
-	@FindBy(id = "LastName")
+	@FindBy(id = "Last Name")
 	private WebElement lastNameTextField;
 
-	@FindBy(id = "Email")
+	@FindBy(id = "Email Address")
 	private WebElement emailTextField;
 
 	@FindBy(id = "Password")
 	private WebElement passwordTextField;
 
-	@FindBy(id = "ConfirmPassword")
+	@FindBy(id = "Confirm Password")
 	private WebElement confirmPasswordTextField;
+	
+	@FindBy(id="Phone Number")
+	private WebElement phoneNumber;
+	
+	@FindBy(id="Terms and Conditions")
+	private WebElement tc;
 
-	@FindBy(id = "register-button")
+	@FindBy(id = "btnDisabled")
 	private WebElement registerButton;
 
 	//================Getters or Public services================
@@ -74,22 +80,34 @@ public class Register_Page extends Base_Page {
 		return registerButton;
 	}
 	
+	public WebElement getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public WebElement getTc() {
+		return tc;
+	}
+
 	//================Business Logic or Action methods or Behavior================
-	public void registerUser(String gender,String firstName,String lastName,String emailId,String password) {
+	public void registerUser(String gender,String firstName,String lastName,String emailId,String password,String number) {
 		if(gender.equalsIgnoreCase("MALE")) 
 			maleRadioButton.click();
 		else 
 			femaleRadioButton.click();
+		
 		firstNameTextField.clear();
 		firstNameTextField.sendKeys(firstName);
 		lastNameTextField.clear();
 		lastNameTextField.sendKeys(lastName);
 		emailTextField.clear();
 		emailTextField.sendKeys(emailId);
+		phoneNumber.clear();
+		phoneNumber.sendKeys(number);
 		passwordTextField.clear();
 		passwordTextField.sendKeys(password);
 		confirmPasswordTextField.clear();
 		confirmPasswordTextField.sendKeys(password);
+		tc.click();
 		registerButton.click();		
 	}
 }

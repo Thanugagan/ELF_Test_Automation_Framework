@@ -88,7 +88,7 @@ public abstract class Base_Test extends InitObjects implements FrameworkConstant
 	 */
 	@BeforeMethod(alwaysRun = true)
 	public void loginToApplication() {
-		
+
 		url = readData.readDataFromPropertyFile("url");
 		emailId = readData.readDataFromPropertyFile("emailId");
 		password = readData.readDataFromPropertyFile("password");
@@ -101,10 +101,14 @@ public abstract class Base_Test extends InitObjects implements FrameworkConstant
 	/**
 	 * this function performs logout action
 	 * @throws IOException 
+	 * @throws InterruptedException 
 	 */
 	@AfterMethod(alwaysRun = true)
-	public void logoutOfApplication() throws IOException {
-		homePage.logout();
+	public void logoutOfApplication() throws IOException, InterruptedException {
+		Home_Page hp = new Home_Page(driver);
+		Thread.sleep(IMPLICIT_TIMEOUT);
+		hp.logout();
+
 	}
 
 	/**
@@ -115,14 +119,14 @@ public abstract class Base_Test extends InitObjects implements FrameworkConstant
 		driver.quit();
 	}
 
-// *****************************************************************************
-// ==============================Custom Exceptions==============================
-// *****************************************************************************
+	// *****************************************************************************
+	// ==============================Custom Exceptions==============================
+	// *****************************************************************************
 
 	@SuppressWarnings("serial")
 	class InvalidBrowserValueException extends Exception {
 		public InvalidBrowserValueException() {
 			super("Please provide browser value either in XML file or property file");
-		}
-	}
+		}}
 }
+

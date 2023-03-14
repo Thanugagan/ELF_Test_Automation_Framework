@@ -22,20 +22,17 @@ public abstract class Base_Page {
 	}
 	
 	//================Web elements or Property================
-	@FindBy(linkText="Log in") 
+	@FindBy(id  ="fl_login_btn") 
 	private WebElement loginLink;
 	
-	@FindBy(linkText="Register") 
+	@FindBy(xpath ="//span[normalize-space()='Create Account']") 
 	private WebElement registerLink;
 	
-	@FindBy(linkText="Shopping cart") 
-	private WebElement shoppingCartLink;
-	
-	@FindBy(linkText="Wishlist") 
-	private WebElement wishListLink;
-	
-	@FindBy(partialLinkText="BOOKS") 
-	private WebElement booksModule;
+	@FindBy(xpath ="//span[@class='BaseBadge-root MuiBadge-root css-1rzb3uu']") 
+	private WebElement accountSettingLink;
+		
+	@FindBy(xpath="//*[local-name()='svg' and @id='editaddress_fl']") 
+	private WebElement editAddress;
 	
 	@FindBy(partialLinkText="COMPUTERS") 
 	private WebElement computersModule;
@@ -73,16 +70,8 @@ public abstract class Base_Page {
 		return registerLink;
 	}
 
-	public WebElement getShoppingCartLink() {
-		return shoppingCartLink;
-	}
-
-	public WebElement getWishListLink() {
-		return wishListLink;
-	}
-
-	public WebElement getBooksModule() {
-		return booksModule;
+	public WebElement getAccountSettingLink() {
+		return accountSettingLink;
 	}
 
 	public WebElement getComputersModule() {
@@ -121,4 +110,11 @@ public abstract class Base_Page {
 		return demoWebShopLogo;
 	}
 		
+	
+	//=================================using business libraries=========================
+	
+public void getLoginPage() {
+	loginLink.click();
+}
+	
 }
